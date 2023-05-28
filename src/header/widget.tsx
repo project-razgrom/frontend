@@ -47,7 +47,7 @@ type Banner = {
 const Drawer = ({ isOpen, toggleOpen }: {isOpen: boolean, toggleOpen: () => void}) => {
     return (
         <div id='drawerOverlay'
-            className="flex justify-start items-end bg-gray-800 absolute inset-0 bg-opacity-50 transition-all duration-100 ease-in-out"
+            className="flex justify-start items-end bg-gray-800 absolute inset-0 bg-opacity-80 transition-all duration-100 ease-in-out"
             style={{
                 zIndex: isOpen ? '1000' : '-1'
             }}
