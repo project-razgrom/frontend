@@ -21,7 +21,7 @@ type BannerComponentProps = {
 export const MainBanner = ({ link, img }: BannerComponentProps) => {
     return (
         <Link 
-            className='flex py-[70px] drop-shadow-2xl' 
+            className='flex my-[70px] drop-shadow-2xl' 
             href={`banners/${link}`}
         >
             <Image
@@ -65,58 +65,34 @@ export const CurrentBannersCollumn = () => {
 
 export const HistoryFeed = () => {
     return(
-        <div className="odd:bg-gray-700 even:bg-gray-900 w-[200px] h-[675[px] text-center">
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px] text-xl font-semibold">
+        <div className="w-[200px] h-[675[px] text-center min-h-fit ">
+            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px] text-xl font-semibold flex justify-center items-center rounded-t-xl">
                 <p>История</p>
             </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
-            <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px]">
-                <p>Привет</p>
-            </div>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>
+            <HistoryTile rarity={3} name=""/>            
+        </div>
+    )
+}
+
+const HistoryTile = ({rarity, name}: {rarity: number, name: string}) => {
+    return(
+        <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px] flex justify-center last:rounded-b-xl">
+            <p className="flex justify-center items-center">{rarity}★ {name}</p>
         </div>
     )
 }

@@ -33,7 +33,7 @@ const Menu = ({ toggleOpen }: MenuProps) => {
     return (
         <>
             <button className='min-w-[60px] min-h-[60px] flex justify-center items-center' onClick={toggleOpen}>
-                <Image src="./assets/Menu Button.svg" alt='Menu' width='40' height='26' />
+                <Image src="http://localhost:3000/assets/Menu Button.svg" alt='Menu' width='40' height='26' />
             </button>
         </>
     )
@@ -47,7 +47,7 @@ type Banner = {
 const Drawer = ({ isOpen, toggleOpen }: {isOpen: boolean, toggleOpen: () => void}) => {
     return (
         <div id='drawerOverlay'
-            className="flex justify-start items-end bg-gray-800 absolute inset-0 bg-opacity-80 transition-all duration-100 ease-in-out"
+            className="flex justify-start items-end bg-gray-800 absolute inset-0 bg-opacity-80 transition-all duration-100 ease-in-out backdrop-blur-sm"
             style={{
                 zIndex: isOpen ? '1000' : '-1'
             }}
@@ -114,7 +114,7 @@ export const BannerComponent = ({ link, img, text }: BannerComponentProps) => {
             href={`banners/${link}`}
         >
             <Image 
-                src={img}
+                src={"http://localhost:3000/"+img}
                 alt={'Banner1'}
                 width={300}
                 height={150}
