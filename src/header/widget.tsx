@@ -1,29 +1,39 @@
 'use client';
 import Image from 'next/image'
-import { useState } from 'react'
-
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react'
 
 
 export const Header = () => {
+    const [open, setOpen] = useState(false)
     return (
-        <header className="bg-gray-900 z-50 flex flex-row justify-between px-5 w-full">
-            <Menu x={6} />
+        <>
+        <header className="bg-gray-900 z-[1000000] h-[80px] flex flex-row justify-between px-5 w-full shadow-lg">
+            <div className='flex flex-row gap-[72px]'>
+                <Menu toggleOpen={() => setOpen(prev => !prev)} />
+                <Title />
+            </div>
+            <div className='flex flex-row items-center gap-6 px-[80px]'>
+                <ProfilePicture />
+                <Profile />
+                
+            </div>
         </header>
+        <Drawer isOpen={open} toggleOpen={() => setOpen(prev => !prev)}/>
+        </>
     )
 }
 
 type MenuProps = {
-    x: number
+    toggleOpen: () => void
 }
 
-const Menu = ({ x }: MenuProps) => {
-    const [open, setOpen] = useState(false)
+const Menu = ({ toggleOpen }: MenuProps) => {
 
     return (
         <>
-            <button onClick={() => setOpen(prev => !prev)}>
-                <Image src="/dsadsa.png" alt='eqwkjk' width='50' height='50' /> 
-                { x }
+            <button className='min-w-[60px] min-h-[60px] flex justify-center items-center' onClick={toggleOpen}>
+                <Image src="./assets/Menu Button.svg" alt='Menu' width='40' height='26' />
             </button>
         </>
     )
@@ -34,11 +44,83 @@ type Banner = {
     name: string,    
 }
 
-const Drawer = ({ data }: {data: Banner[]}) => (
-    <div className="text-center">
-        <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
-            Show navigation
-        </button>
-    </div>
-)
+const Drawer = ({ isOpen, toggleOpen }: {isOpen: boolean, toggleOpen: () => void}) => {
+    return (
+        <div id='drawerOverlay'
+            className="flex justify-start items-end bg-gray-800 absolute inset-0 bg-opacity-50 transition-all duration-100 ease-in-out"
+            style={{
+                zIndex: isOpen ? '1000' : '-1'
+            }}
+            onClick={toggleOpen} 
+        >
+            <div 
+                className='h-[calc(100%-80px)] bg-gray-900 transition-all duration-100 ease-in-out flex flex-col justify-start items-center overflow-x-hidden overflow-y-auto gap-[2rem] px-10 py-3'
+                style={{
+                    maxWidth: isOpen ? '330px' : '0'
+                }} 
+                onClick={e => e.stopPropagation()}
+            >
+                <BannerComponent link={'.1'} img={'assets/BannerImage/baidzhu020523.svg'} text={'Бай Чжу'}/>
+                <BannerComponent link={'.1'} img={'assets/BannerImage/ganyu020523.svg'} text={'Гань Юй'}/>
+                <BannerComponent link={'.1'} img={'assets/BannerImage/nilou120423.svg'} text={'Нилу'}/>
+            </div>
+        </div>
+    )
+}
 
+
+const Title = () => {
+    return (
+        <div className='flex items-center justify-center'>
+            <Link href='/' className='font-bold text-5xl text-titles-color-900'>GenshinScam</Link> 
+        </div>
+    )
+}
+
+const Profile = () => {
+    return (
+        <div className='flex items-center justify-center'>
+            <span className='font-regular text-xl text-titles-color-900'>Log In/Sign In</span> 
+        </div>
+    )
+}
+
+const ProfilePicture = () => {
+    return (
+        <div className="w-[40px] h-[40px] rounded-[50%] bg-gray-800 flex items-center justify-center">
+            <p className="text-header-color-900">M</p>
+        </div>
+    )
+}
+
+const HistoryFeed = () => {
+    return (
+        <div className='h-[130px] w-full bg-titles-color-900'>
+
+        </div>
+    )
+}
+
+type BannerComponentProps = { 
+    link: string, 
+    img: string, 
+    text: string, 
+}
+
+export const BannerComponent = ({ link, img, text }: BannerComponentProps) => {
+    return (
+        <Link 
+            className='flex flex-col h-full w-full justify-center items-center gap-1' 
+            href={`banners/${link}`}
+        >
+            <Image 
+                src={img}
+                alt={'Banner1'}
+                width={300}
+                height={150}
+                className='rounded-2xl'
+            />
+            <p className='text-[16px] font-medium'>{text}</p>
+        </Link>
+    )
+}
