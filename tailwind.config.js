@@ -5,7 +5,8 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/header/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/last-drops/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/last-drops/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/banners-on-main/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {

@@ -8,7 +8,7 @@ export const Header = () => {
     const [open, setOpen] = useState(false)
     return (
         <>
-        <header className="bg-gray-900 z-[1000000] h-[80px] flex flex-row justify-between px-5 w-full shadow-lg">
+        <header className="bg-gray-900 z-[1000000] basis-[80px] flex flex-row justify-between px-5 w-full shadow-lg shrink-0 grow-0">
             <div className='flex flex-row gap-[72px]'>
                 <Menu toggleOpen={() => setOpen(prev => !prev)} />
                 <Title />
@@ -79,17 +79,17 @@ const Title = () => {
 
 const Profile = () => {
     return (
-        <div className='flex items-center justify-center'>
+        <Link href='/authorize' className='flex items-center justify-center'>
             <span className='font-regular text-xl text-titles-color-900'>Log In/Sign In</span> 
-        </div>
+        </Link>
     )
 }
 
 const ProfilePicture = () => {
     return (
-        <div className="w-[40px] h-[40px] rounded-[50%] bg-gray-800 flex items-center justify-center">
+        <Link href='/authorize' className="w-[40px] h-[40px] rounded-[50%] bg-gray-800 flex items-center justify-center">
             <p className="text-header-color-900">M</p>
-        </div>
+        </Link>
     )
 }
 

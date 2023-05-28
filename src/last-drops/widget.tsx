@@ -1,9 +1,8 @@
 'use client';
-import { BannerComponent } from "@/header/widget"
 
 export const LastDrops = () => {
     return (
-        <div className="h-[100px] w-full bg-gray-700 flex flex-row">
+        <div className="basis-[100px] w-full bg-gray-700 flex flex-row shrink-0 grow-0">
                         
         </div>
     )
