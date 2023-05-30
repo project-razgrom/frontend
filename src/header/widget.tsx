@@ -1,4 +1,5 @@
 'use client';
+import { AuthWidget } from '@/app/auth/widget';
 import Image from 'next/image'
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
@@ -14,7 +15,6 @@ export const Header = () => {
                 <Title />
             </div>
             <div className='flex flex-row items-center gap-6 px-[80px]'>
-                <ProfilePicture />
                 <Profile />
                 
             </div>
@@ -79,9 +79,7 @@ const Title = () => {
 
 const Profile = () => {
     return (
-        <Link href='/authorize' className='flex items-center justify-center'>
-            <span className='font-regular text-xl text-titles-color-900'>Log In/Sign In</span> 
-        </Link>
+        <AuthWidget />
     )
 }
 

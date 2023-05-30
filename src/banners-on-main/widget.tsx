@@ -1,13 +1,17 @@
 'use client';
 import Link from "next/link";
 import Image from 'next/image'
+import { Banner } from "@/app/page";
 
-export const BannersOnMainPage = () => {
+export const BannersOnMainPage = ({banners, userDrops}: {banners: Banner[], userDrops: any[]}  ) => {
+    const mainBanner = banners[0]
+    const lessBanners = banners.slice(1, 4)
+
     return (
         <div className= "basis-[100%] flex flex-row gap-[20px] justify-center items-center ">
-            <CurrentBannersCollumn />
-            <MainBanner link={'Shenhe210323'} img={'assets/BannerImage/shenhe210323.svg'} text={'Шэнь Хэ'} /> 
-            <HistoryFeed />
+            <CurrentBannersCollumn other={lessBanners}/>
+            <MainBanner link={mainBanner.id} img={`http://localhost:7253/static/${mainBanner.imagePath}`} text={mainBanner.name} /> 
+            <HistoryFeed history={userDrops} />
         </div>
     )
 }
@@ -42,7 +46,7 @@ export const BannersInCollumn = ({ link, img, text }: BannerComponentProps) => {
             href={`banners/${link}`}
         >
             <Image
-                src={img}
+                src={'http://localhost:7253/static/' + img}
                 alt={'Banner1'}
                 width={300}
                 height={198.75}
@@ -53,38 +57,23 @@ export const BannersInCollumn = ({ link, img, text }: BannerComponentProps) => {
     )
 }
 
-export const CurrentBannersCollumn = () => {
+export const CurrentBannersCollumn = ({other}: {other: any[]}) => {
     return(
         <div className="flex flex-col justify-start items-center px-10 py-3">
-            <BannersInCollumn link={'Ayaka210323'} img={'assets/BannerImage/ayaka210323.svg'} text={'Аяка'} />
-            <BannersInCollumn link={'Weapons210323'} img={'assets/BannerImage/weapon210323.svg'} text={'Оружейный Баннер'} />
-            <BannersInCollumn link={'Standard'} img={'assets/BannerImage/standard.svg'} text={'Стандартный Баннер'} />
+            {other.map(el => <BannersInCollumn link={el.id} img={el.imagePath} text={el.name} key={el.id} />)}
         </div>
     )
 }
 
-export const HistoryFeed = () => {
+export const HistoryFeed = ({ history }: { history: {item: {type: number, name: string}, id: string}[] }) => {
     return(
         <div className="w-[200px] h-[675[px] text-center min-h-fit ">
             <div className="odd:bg-gray-700 even:bg-gray-900 h-[40px] text-xl font-semibold flex justify-center items-center rounded-t-xl">
                 <p>История</p>
             </div>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>
-            <HistoryTile rarity={3} name=""/>            
+            { history.map(el => (
+                <HistoryTile rarity={el.item.type} name={el.item.name} key={el.id}/>
+            )) }            
         </div>
     )
 }

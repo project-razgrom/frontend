@@ -6,7 +6,9 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/header/**/*.{js,ts,jsx,tsx,mdx}',
     './src/last-drops/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/banners-on-main/**/*.{js,ts,jsx,tsx,mdx}'
+    './src/banners-on-main/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/gacha/**/*.{js,ts,jsx,tsx,mdx}',
+    '/src/auth/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
