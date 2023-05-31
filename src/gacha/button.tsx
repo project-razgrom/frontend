@@ -20,6 +20,7 @@ const getGacha = async (bannerId: string) => {
 export const GachaWidget = () => {
     const [isOpen, setOpen] = useState(false);
     const [anim, setAnim] = useState(false)
+    const [name, setNmae] = useState(false)
     const [item, setItem] = useState<any | null>(null)
     const params = useParams()
 
@@ -30,6 +31,7 @@ export const GachaWidget = () => {
         const gachaItem = JSON.parse(await getGacha(params.id))
         setItem(gachaItem)
         setAnim(false)
+        
     }
     console.log(item)
     return (
@@ -41,7 +43,10 @@ export const GachaWidget = () => {
                 <div onClick={() => setOpen(false)} className="absolute inset-0 bg-gray-800 opacity-80 backdrop-blur-md flex justify-center items-center">
                     <div>
                         { anim ? <Animation /> : null }
-                        { item && <Image src={'http://localhost:7253/static/' + item.item.image} alt="ewjqkeqw" width={200} height={200} /> }
+                        { item && <div className="flex flex-col gap-5">
+                            <Image src={'http://localhost:7253/static/' + item.item.image} alt="ewjqkeqw" width={200} height={200} /> 
+                            <p className="flex justify-center items-center">{item.item.name}</p>
+                            </div>}
                     </div>              
                 </div> 
             }
